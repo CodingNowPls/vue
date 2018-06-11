@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue中的set方法</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-for='(item,index) of userInfo'>
+				{{item}}
+	 
+		</div>
+		
+		<script>
+			var app=new Vue({
+				el:'#app',
+				data:{
+					 userInfo:{
+					 	name:'Dell',
+					 	age:28,
+					 	gender:'male',
+					 	salary:'secret'
+					 } 
+				}
+				
+			})
+			// Vue.set(app.userInfo,'address','beijing');
+			// app.$set(app.userInfo,'address','beijing');
+			
+			
+		</script>
+	</body>
+</html>

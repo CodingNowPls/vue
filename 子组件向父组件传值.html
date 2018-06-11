@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>父组件向子组件传值</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="root">
+			v-bind: == :
+			<input type="text" v-model="todoValue"/>
+			<button @click="handleBtnClick">提交</button>
+			<ul>
+				<!--<li v-for="item in list">{{item}}</li>-->
+				<todo-item v-bind:content='item'
+							v-bind:index='index'
+							v-for='(item,index) in list'
+							@delete='handleItemDelete'>
+					
+				</todo-item>
+				
+			</ul>
+			
+	 
+		</div>
+		<script>
+/* 			Vue.component('TodoItem',{
+				props:['content'],
+				template:'<li>{{content}}</li>'
+			}) */
+			
+			var TodoItem={
+				props:['content','index'],
+				template:'<li @click="handleItemClick">{{content}}</li>',
+				methods:{
+					handleItemClick:function(){
+						alert('点击了<li></li>元素')
+						this.$emit('delete',this.index)
+					}
+				}
+			}
+			
+			var app=new Vue({
+				el:'#root',
+				components:{
+					TodoItem:TodoItem
+				},
+				data:{
+					list:[],
+					todoValue:''
+				},
+				methods:{
+					handleBtnClick:function(){
+						 this.list.push(this.todoValue)
+						 this.todoValue=''
+					},
+					handleItemDelete:function(index){
+						alert('要删除的下标是:'+index);
+						this.list.splice(index,1);
+					}
+				}
+			})
+		 
+			
+			
+	</script>
+	</body>
+</html>

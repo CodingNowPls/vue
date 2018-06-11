@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue实例</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			 <div v-on:click='handClick'>
+				{{message}}
+			 </div>
+			 <div @click='handClick'>  
+			 {{message}}   @click== v-on:click
+			 </div>
+			 <item></item>
+		</div>
+	</body>
+	<script>
+		
+		Vue.component( 'item',{
+			template:'<div>hello item 哈哈哈</div>'
+			
+		})
+		
+		var app=new Vue({
+			el:'#root',
+			data:{
+				message:'hello world'
+			},
+			methods:{
+				handClick:function(){
+					alert('hello')
+				}
+			}
+		})
+ 	</script>
+</html>

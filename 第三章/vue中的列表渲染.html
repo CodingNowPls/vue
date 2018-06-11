@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue 的列表渲染</title>
+		<script src="../js/vue.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+				<div id="app">
+<!--					<template v-for='(item,index) of list' :key='item.id'>
+						<div>
+							{{item.id}}
+						</div>
+						<span>
+							{{item.text}}
+						</span>
+					</template>-->
+				
+					<div v-for='(item,key) of userInfo'>
+						{{item}}
+					</div>
+				</div>
+				<script>
+					//push pop shift,unshift,solice,sort,reverse
+					var app=new Vue({
+						el:'#app',
+						data:{
+							list:[{
+									id:'3333',text:'dfsfsd'
+								 },{
+									id:'2222',text:'dfsfsd'
+								 }
+							 ],
+							userInfo:{
+								 name:'Dell',
+								 age:28,
+								 gender:'male',
+								 salary:'secret'
+							 } 
+						}
+						
+					})
+				</script>
+	</body>
+</html>
